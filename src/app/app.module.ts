@@ -13,6 +13,9 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ProductComponent } from './product/product.component';
 import { UserComponent } from './user/user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FormsModule } from '@angular/forms';
+import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,15 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     OrderDetailsComponent,
     ProductComponent,
     UserComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // https://angular.io/api/forms/NgForm
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
