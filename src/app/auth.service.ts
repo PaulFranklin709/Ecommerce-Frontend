@@ -35,6 +35,23 @@ export class AuthService {
       );
   }
 
+  login(username: string, password: string) {
+    let url = "http://localhost:8080/auth";
+
+    this.http.post(url, {
+      username: username, 
+      password: password
+    }).subscribe(
+      (response: any) => {
+        this.auth = response;
+        this.hasAuth = true;
+        // https://www.digitalocean.com/community/tutorials/angular-navigation-routerlink-navigate-navigatebyurl
+        this.router.navigateByUrl("/");
+      },
+      (error) => {console.log(error)}
+      );
+  }
+
   isAuth(): boolean {
     return this.hasAuth;
   }
