@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -9,9 +10,11 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupComponent {
   http: HttpClient;
+  router: Router;
 
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, router: Router) {
     this.http = http;
+    this.router = router;
   }
 
   onSubmit(form: NgForm) {
@@ -27,8 +30,10 @@ export class SignupComponent {
       password: password
     }).subscribe(
       (response: any) => {
-        console.log(response);
-      }
-    );
+        // https://www.digitalocean.com/community/tutorials/angular-navigation-routerlink-navigate-navigatebyurl
+        this.router.navigateByUrl("/");
+      },
+      (error) => {console.log(error)}
+      );
   }
 }
