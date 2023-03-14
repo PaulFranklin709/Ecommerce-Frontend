@@ -1,1 +1,5 @@
-<p>home works!</p>
+<div *ngFor="let product of products">
+    <!-- https://angular.io/guide/component-interaction -->
+    <app-product [product]="product"></app-product>
+    <br><br>
+</div>
