@@ -17,11 +17,28 @@ export class ProductService {
   getProducts() {
     let url = "http://localhost:8080/products";
 
-    this.http.get(url).subscribe(
-      (response: any) => {
-        console.log(response);
-      },
-      (error) => {console.log(error)}
-      );
+    return this.http.get(url);
+  }
+
+  getProductsResponse(response: any) {
+    for (let i = 0; i < response.length; i++) {
+      let element = response[i];
+      let product = new Product(element.productId, element.productName, element.productDescription, element.productPrice);
+      this.products.push(product);
+    }
+  }
+
+  getProductsError(error: any) {
+    console.log(error)
+  }
+
+  getProductById(productId: string): Product {
+    for (let i = 0; i < this.products.length; i++) {
+      let product = this.products[i];
+      if (product.productId === productId) {
+        return product;
+      }
+    }
+    throw "Not Found";
   }
 }
