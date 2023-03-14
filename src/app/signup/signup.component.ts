@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,12 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-  http: HttpClient;
-  router: Router;
+  authService: AuthService;
 
-  constructor(http: HttpClient, router: Router) {
-    this.http = http;
-    this.router = router;
+  constructor(authService: AuthService) {
+    this.authService = authService;
   }
 
   onSubmit(form: NgForm) {
@@ -23,17 +22,6 @@ export class SignupComponent {
     console.log(username);
     console.log(password);
 
-    let url = "http://localhost:8080/users";
-
-    this.http.post(url, {
-      username: username, 
-      password: password
-    }).subscribe(
-      (response: any) => {
-        // https://www.digitalocean.com/community/tutorials/angular-navigation-routerlink-navigate-navigatebyurl
-        this.router.navigateByUrl("/");
-      },
-      (error) => {console.log(error)}
-      );
+    this.authService.register(username, password);
   }
 }
