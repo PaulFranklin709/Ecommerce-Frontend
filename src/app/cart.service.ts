@@ -21,4 +21,15 @@ export class CartService {
     this.products.push(product);
     window.sessionStorage.setItem("products", JSON.stringify(this.products));
   }
+
+  totalPrice(): Number {
+    let total = 0;
+
+    for (let i = 0; i < this.products.length; i++) {
+      let product = this.products[i];
+      total = total + product.productPrice;
+    }
+
+    return total;
+  }
 }
