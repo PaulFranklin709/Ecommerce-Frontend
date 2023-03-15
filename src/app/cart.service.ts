@@ -40,7 +40,7 @@ export class CartService {
   order(totalPrice: Number, token: string) {
     let url = "http://localhost:8080/orders";
 
-    this.http.post(url, {
+    return this.http.post(url, {
       totalPrice: totalPrice
     },
     {
@@ -48,11 +48,11 @@ export class CartService {
       headers: new HttpHeaders({
         'authorization': token
       })
-    }).subscribe(
-      (response: any) => {
-        // clear the cart
-      },
-      (error) => {console.log(error)}
-      );
+    });
+  }
+
+  clearCart() {
+    this.products = [];
+    window.sessionStorage.removeItem("products");
   }
 }
