@@ -21,6 +21,7 @@ export class ProductService {
   }
 
   getProductsResponse(response: any) {
+    this.products = [];
     for (let i = 0; i < response.length; i++) {
       let element = response[i];
       let product = new Product(element.productId, element.productName, element.productDescription, element.productPrice);
