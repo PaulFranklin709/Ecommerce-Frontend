@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from './model/product';
 
@@ -6,8 +7,11 @@ import { Product } from './model/product';
 })
 export class CartService {
   products: Product[]
+  http: HttpClient;
 
-  constructor() {
+  constructor(http: HttpClient) {
+    this.http = http;
+
     const products = window.sessionStorage.getItem("products");
     if (products !== null) {
       this.products = JSON.parse(products);
@@ -31,5 +35,24 @@ export class CartService {
     }
 
     return total;
+  }
+
+  order(totalPrice: Number, token: string) {
+    let url = "http://localhost:8080/orders";
+
+    this.http.post(url, {
+      totalPrice: totalPrice
+    },
+    {
+      // https://angular.io/guide/http
+      headers: new HttpHeaders({
+        'authorization': token
+      })
+    }).subscribe(
+      (response: any) => {
+        // clear the cart
+      },
+      (error) => {console.log(error)}
+      );
   }
 }
