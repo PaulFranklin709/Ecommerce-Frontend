@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Product } from '../model/product';
-import { ProductService } from '../product.service';
 
 @Component({
   selector: 'app-product',
@@ -12,5 +11,9 @@ export class ProductComponent {
 
   constructor() {
     this.product = new Product("","","",0);
+  }
+  
+  buy() {
+    
   }
 }
