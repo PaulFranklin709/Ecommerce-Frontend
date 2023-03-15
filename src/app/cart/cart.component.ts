@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../cart.service';
 import { Product } from '../model/product';
 import { ProductService } from '../product.service';
@@ -12,13 +12,15 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent {
+  router: Router;
   authService: AuthService;
   cartService: CartService;
   products: Product[];
   totalPrice: Number;
   token: string;
 
-  constructor(activatedRoute: ActivatedRoute, productService: ProductService, cartService: CartService, authService: AuthService) {
+  constructor(activatedRoute: ActivatedRoute, productService: ProductService, cartService: CartService, authService: AuthService, router: Router) {
+    this.router = router;
     this.authService = authService;
     this.cartService = cartService;
     this.products = [];
@@ -41,6 +43,7 @@ export class CartComponent {
         this.products = [];
         this.cartService.clearCart();
         this.totalPrice = this.cartService.totalPrice();
+        this.router.navigateByUrl("/");
       },
       (error) => {console.log(error)}
       );
