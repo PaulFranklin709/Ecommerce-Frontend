@@ -28,6 +28,7 @@ export class AuthService {
       (response: any) => {
         this.auth = response;
         this.hasAuth = true;
+        window.sessionStorage.setItem("auth",JSON.stringify(this.auth));
         // https://www.digitalocean.com/community/tutorials/angular-navigation-routerlink-navigate-navigatebyurl
         this.router.navigateByUrl("/");
       },
@@ -45,6 +46,7 @@ export class AuthService {
       (response: any) => {
         this.auth = response;
         this.hasAuth = true;
+        window.sessionStorage.setItem("auth",JSON.stringify(this.auth));
         // https://www.digitalocean.com/community/tutorials/angular-navigation-routerlink-navigate-navigatebyurl
         this.router.navigateByUrl("/");
       },
@@ -53,6 +55,15 @@ export class AuthService {
   }
 
   isAuth(): boolean {
+    const auth = window.sessionStorage.getItem("auth");
+    if (auth !== null) {
+      this.auth = JSON.parse(auth);
+      this.hasAuth = true;
+    }
+    else {
+      this.auth = null;
+      this.hasAuth = false;
+    }
     return this.hasAuth;
   }
 }
