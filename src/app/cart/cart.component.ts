@@ -38,7 +38,6 @@ export class CartComponent {
   onSubmit(form: NgForm) {
     this.cartService.order(this.totalPrice, this.token).subscribe(
       (response: any) => {
-        // clear the cart
         this.products = [];
         this.cartService.clearCart();
         this.totalPrice = this.cartService.totalPrice();
