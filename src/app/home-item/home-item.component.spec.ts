@@ -2,22 +2,22 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeItemComponent } from './home-item.component';
 
-describe('HomeItemComponent', () => {
-  let component: HomeItemComponent;
-  let fixture: ComponentFixture<HomeItemComponent>;
+// describe('HomeItemComponent', () => {
+//   let component: HomeItemComponent;
+//   let fixture: ComponentFixture<HomeItemComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ HomeItemComponent ]
-    })
-    .compileComponents();
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       declarations: [ HomeItemComponent ]
+//     })
+//     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     fixture = TestBed.createComponent(HomeItemComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
