@@ -9,10 +9,12 @@ import { AuthService } from '../auth.service';
 export class HeaderComponent {
   authService: AuthService;
   username: string;
+  country: string;
 
   constructor(authService: AuthService) {
     this.authService = authService;
     this.username = "";
+    this.country = "";
   }
 
   showLogin(): boolean {
@@ -24,6 +26,7 @@ export class HeaderComponent {
 
     if (!showLogin) {
       this.username = this.authService.auth.username;
+      this.country = this.authService.auth.country;
     }
 
     return !showLogin;

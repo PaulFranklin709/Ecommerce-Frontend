@@ -19,9 +19,8 @@ export class SignupComponent {
   onSubmit(form: NgForm) {
     let username = form.value.username;
     let password = form.value.password;
-    console.log(username);
-    console.log(password);
+    let country = form.value.country;
 
-    this.authService.register(username, password);
+    this.authService.register(username, password, country);
   }
 }

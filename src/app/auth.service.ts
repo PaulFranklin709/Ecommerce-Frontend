@@ -18,12 +18,13 @@ export class AuthService {
     this.hasAuth = false;
   }
 
-  register(username: string, password: string) {
+  register(username: string, password: string, country: string) {
     let url = "http://localhost:8080/users";
 
     this.http.post(url, {
       username: username, 
-      password: password
+      password: password,
+      country: country
     }).subscribe(
       (response: any) => {
         this.auth = response;
