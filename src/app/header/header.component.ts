@@ -13,6 +13,8 @@ export class HeaderComponent {
   username: string;
   countryCode: string;
   country: string;
+  flagSrc: string;
+  flagSrcset: string;
 
   constructor(authService: AuthService, flagService: FlagService) {
     this.authService = authService;
@@ -20,6 +22,8 @@ export class HeaderComponent {
     this.username = "";
     this.countryCode = "";
     this.country = "";
+    this.flagSrc = "";
+    this.flagSrcset = "";
   }
 
   showLogin(): boolean {
@@ -33,6 +37,8 @@ export class HeaderComponent {
       this.username = this.authService.auth.username;
       this.countryCode = this.authService.auth.country;
       this.country = this.flagService.flags()[this.countryCode];
+      this.flagSrc = "https://flagcdn.com/16x12/"+this.countryCode+".png";
+      this.flagSrcset = "https://flagcdn.com/32x24/"+this.countryCode+".png 2x,https://flagcdn.com/48x36/"+this.countryCode+".png 3x"
     }
 
     return !showLogin;
