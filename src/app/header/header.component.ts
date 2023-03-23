@@ -36,9 +36,14 @@ export class HeaderComponent {
     if (!showLogin) {
       this.username = this.authService.auth.username;
       this.countryCode = this.authService.auth.country;
-      this.country = this.flagService.flags()[this.countryCode];
-      this.flagSrc = "https://flagcdn.com/16x12/"+this.countryCode+".png";
-      this.flagSrcset = "https://flagcdn.com/32x24/"+this.countryCode+".png 2x,https://flagcdn.com/48x36/"+this.countryCode+".png 3x"
+      
+      let flags = this.flagService.flags();
+
+      if (flags !== null) {
+        this.country = this.flagService.flags()[this.countryCode];
+        this.flagSrc = "https://flagcdn.com/16x12/"+this.countryCode+".png";
+        this.flagSrcset = "https://flagcdn.com/32x24/"+this.countryCode+".png 2x,https://flagcdn.com/48x36/"+this.countryCode+".png 3x"
+      }
     }
 
     return !showLogin;
