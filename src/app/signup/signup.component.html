@@ -3,7 +3,9 @@
     <br><br>
     <input type="password" name="password" ngModel placeholder="Password" />
     <br><br>
-    <input type="country" name="country" ngModel placeholder="Country" />
+    <select name="countries" ngModel>
+        <option [value]="key" *ngFor="let key of flagsKeys">{{flags[key]}}</option>
+    </select>
     <br><br>
     <button>Register</button>
 </form>
