@@ -16,4 +16,12 @@ describe('FlagService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should have as flags null', () => {
+    expect(service.flags()).toBeNull();
+  });
+
+  it('should have as flagsKeys null', () => {
+    expect(service.flagsKeys()).toBeNull();
+  });
 });
