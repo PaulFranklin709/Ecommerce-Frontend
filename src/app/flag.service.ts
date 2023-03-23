@@ -12,6 +12,7 @@ export class FlagService {
   }
 
   getFlags() {
+    // https://flagpedia.net/download/api
     let url = "https://flagcdn.com/en/codes.json";
 
     return this.http.get(url);
